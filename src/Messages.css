@@ -1,0 +1,77 @@
+body {
+    background-color: var(--background-color);
+}
+
+.messenger-window {
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    margin-top: 150px;
+    min-height: 720px;
+    display: flex;
+}
+
+.messenger-sidebar {
+    margin-left: 40px;
+    padding-top: 10px;
+    max-width: 300px;
+    height: 720px;
+    border-right: 5px var(--accent-color) solid;
+    padding-right: 10px;
+}
+
+.messenger-sidebar__profile {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.side-profile__nickname {
+    margin: 0 20px;
+}
+
+.profile-avatar {
+    width: 50px;
+    height: 50px;
+}
+
+.horizontal-line {
+    height: 1px;
+    background-color: gray;
+}
+
+.messenger-sidebar__searchline input {
+    margin-top: 20px;
+    background-image: url();
+    background-repeat: no-repeat;
+    background-position: 8px;
+    background-size: auto 90%;
+    border-radius: 20px;
+    padding-left: 10px;
+    width: 250px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.messenger-sidebar__contacts {
+    margin-top: 10px;
+}
+
+.sidebar-contacts__item {
+    align-items: center;
+    height: 75px;
+    display: flex;
+    transition: 0.2s;
+}
+
+.sidebar-contacts__item:hover {
+    cursor: pointer;
+    background-color: var(--background-color);
+}
+
+.item-avatar {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.contacts-item__info {}

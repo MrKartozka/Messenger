@@ -1,0 +1,17 @@
+.userinfo-container {
+    padding-top: 75px;
+    width: 265px;
+    border-left: 5px var(--accent-color) solid;
+}
+
+.userinfo-avatar {
+    display: flex;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.userinfo-textinfo {
+    text-align: center;
+}
