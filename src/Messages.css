@@ -32,6 +32,37 @@ body {
 .profile-avatar {
     width: 50px;
     height: 50px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.profile-avatar.online {
+    border: 3px solid rgb(128, 212, 128);
+    border-radius: 50%;
+}
+
+.profile-avatar.away {
+    border: 3px solid rgb(255, 196, 0);
+    border-radius: 50%;
+}
+
+.profile-avatar.offline {
+    border: 3px solid red;
+    border-radius: 50%;
+}
+
+.side-profile__options {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 1px solid gray;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.side-profile__options:hover {
+    background-color: var(--background-color);
 }
 
 .horizontal-line {
@@ -69,9 +100,73 @@ body {
 }
 
 .item-avatar {
+    margin-left: 10px;
     width: 50px;
     height: 50px;
     margin-right: 10px;
 }
 
-.contacts-item__info {}
+/* Модальное окно изменения статуса */
+
+.sidebar-modal__changestatus {
+    margin-left: 55px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    /* Добавьте стили для модального окна */
+}
+
+.sidebar-modal__changestatus button {
+    margin-bottom: 2px;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+    width: 100px;
+    height: 20px;
+}
+
+.sidebar-modal__changestatus button:nth-child(1):hover {
+    background-color: rgb(189, 240, 189);
+}
+
+.sidebar-modal__changestatus button:nth-child(2):hover {
+    background-color: rgb(255, 227, 137);
+}
+
+.sidebar-modal__changestatus button:nth-child(3):hover {
+    background-color: rgb(255, 170, 170)
+}
+
+/* Модальное окно настроек */
+
+.sidebar-modal__options {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: -35px;
+    right: -95px;
+    z-index: 2;
+}
+
+.sidebar-modal__options button {
+    margin-bottom: 2px;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+    width: 100px;
+    height: 40px;
+}
+
+.sidebar-modal__options button:hover {
+    background-color: var(--background-color);
+}
+
+.options-button-wrapper {
+    position: relative;
+    display: block;
+    width: 30px;
+}

@@ -16,3 +16,10 @@
   max-width: 1440px;
   margin: 0 auto;
 }
+
+body {
+  background: rgb(188, 210, 255);
+  background: radial-gradient(circle,
+      rgba(188, 210, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 100%);
+}

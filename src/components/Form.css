@@ -25,13 +25,21 @@
     font-size: 22px;
 }
 
-.passwordbox {
+.inputbox {
     margin-top: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border-radius: 8px;
     width: 400px;
     height: 40px;
-    font-size: 18px;
+    font-size: 22px;
+}
+
+.confirm-password {
+    margin-bottom: 10px;
+    border-radius: 8px;
+    width: 400px;
+    height: 40px;
+    font-size: 22px;
 }
 
 .auth-menu__box button {
