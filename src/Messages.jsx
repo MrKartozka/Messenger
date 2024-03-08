@@ -1,21 +1,38 @@
 import "./App.css";
 import "./Messages.css";
-import {useState} from 'react';
+import { useState } from 'react';
 import { Link } from "react-router-dom";
 
 function Messages() {
+    const profileAvatars = ['av1.png', 'av2.png', 'av3.png', 'av4.png', 'av5.png', 'av6.png',]
+    const [currentAvatar, setCurrentAvatar] = useState(profileAvatars[4]);
     const [isOptionsModalOpen, setIsOptionsModalOpen] = useState(false);
     const [isStatusModalOpen, setIsStatusModalOpen] = useState(false);
+    const [isChangeAvatarOpen, setIsChangeAvatarOpen] = useState(false);
     const [status, setStatus] = useState("online");
+
+    const showAllAvatars = () => {
+        for (let i = 0; i < profileAvatars.length; i++) {
+
+        }
+    }
+    const handleAvatarChange = (avatar) => {
+        setCurrentAvatar(avatar);
+        setIsChangeAvatarOpen(false); // Закрытие модального окна после выбора аватара
+    }
 
     const handleOptionsClick = () => {
         setIsOptionsModalOpen(!isOptionsModalOpen);
+        setIsChangeAvatarOpen(false)
     };
 
     const handleAvatarClick = () => {
         setIsStatusModalOpen(!isStatusModalOpen);
     };
-    
+    const handleChangeAvatarClick = () => {
+        setIsChangeAvatarOpen(!isChangeAvatarOpen)
+        setIsOptionsModalOpen(!isOptionsModalOpen);
+    }
     const changeStatus = (newStatus) => {
         setStatus(newStatus);
         setIsStatusModalOpen(false);
@@ -29,7 +46,7 @@ function Messages() {
                     </div>
                     <div className="messenger-sidebar__profile">
                         <img
-                            src="/av4.png"
+                            src={currentAvatar}
                             alt=""
                             className={`profile-avatar ${status}`}
                             onClick={handleAvatarClick}
@@ -50,19 +67,29 @@ function Messages() {
                         )}
                         <h3 className="side-profile__nickname">Пользователь</h3>
                         <div className="options-button-wrapper">
-                        <button className="side-profile__options" onClick={handleOptionsClick}>...</button>
-                        {isOptionsModalOpen && (
-                            <div className="sidebar-modal__options">
-                                <button>
-                                    Сменить аватарку
-                                </button>
-                                <Link to="/auth">
-                                <button>
-                                    Сменить пользователя
-                                </button>
-                                </Link>
-                            </div>
-                        )}
+                            <button className="side-profile__options" onClick={handleOptionsClick}>...</button>
+                            {isOptionsModalOpen && (
+                                <div className="sidebar-modal__options">
+                                    <button onClick={handleChangeAvatarClick}>
+                                        Сменить аватарку
+                                    </button>
+
+                                    <Link to="/auth">
+                                        <button>
+                                            Сменить пользователя
+                                        </button>
+                                    </Link>
+                                </div>
+                            )}
+                            {isChangeAvatarOpen && (
+                                <div className="sidebar-modal__avatars">
+                                    {profileAvatars.map((avatar, index) => (
+                                        <button key={index} onClick={() => handleAvatarChange(avatar)}>
+                                            <img src={avatar} alt={`avatar ${index}`} />
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className="messenger-sidebar__searchline">
@@ -95,7 +122,7 @@ function Messages() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
