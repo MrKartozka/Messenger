@@ -3,9 +3,12 @@ import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import App from "../App";
 import FormAuth from "../components/FormAuth";
 import { useState } from "react";
+import { registerUser } from '../actions/authActions';
+import { useDispatch } from 'react-redux';
 
 function FormReg() {
-    const navigate = useNavigate(); // Хук для программного навигации
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         username: "",
         email: "",
@@ -19,37 +22,17 @@ function FormReg() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+    
         if (formData.password !== formData.confirmPassword) {
-            alert("Пароли не совпадают");
+            alert("Passwords do not match");
             return;
         }
-
-        try {
-            const response = await fetch('/api/auth/register', { // Убедитесь, что адрес соответствует вашему серверному эндпоинту
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: formData.username,
-                    email: formData.email,
-                    password: formData.password
-                })
-            });
-
-            const data = await response.json();
-
-            if (response.status === 200) {
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('username', formData.username); // Сохраните имя пользователя
-                navigate('/app');
-            } else {
-                alert(data);
-            }
-        } catch (error) {
-            console.error('Ошибка при регистрации', error);
-        }
+        
+        dispatch(registerUser({
+            username: formData.username,
+            email: formData.email,
+            password: formData.password
+        }, navigate));
     };
 
     return (
@@ -101,8 +84,7 @@ function FormReg() {
                                     onChange={handleChange}
                                 />
                             </div>
-
-                                <button type="submit" className="buttonbox"> Войти</button>
+                            <button type="submit" className="buttonbox">Зарегистрироваться</button>
                         </div>
                     </form>
                     <div className="registerlink">
@@ -124,7 +106,6 @@ function AppRouter() {
             <Route path="/" element={<FormReg />} />
             <Route path="/app" element={<App />} />
             <Route path="/auth" element={<FormAuth />} />
-            {/* Остальные маршруты */}
         </Routes>
     );
 }

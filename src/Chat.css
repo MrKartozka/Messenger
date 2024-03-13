@@ -3,11 +3,22 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
+    max-width: 870px;
 }
 
 .chat-messages {
     flex-grow: 1;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.message {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0;
+    max-width: 100%;
 }
 
 .message-bubble {
@@ -15,17 +26,32 @@
     padding: 10px 15px;
     border-radius: 20px;
     max-width: 60%;
+    overflow-wrap: break-word;
 }
 
-.sent {
+.sent .message-bubble {
     background-color: var(--accent-color);
-    color: white;
-    align-self: flex-end;
+    border-bottom-right-radius: 0;
+    order: 1;
 }
 
-.received {
+.received .message-bubble {
     background-color: #ececec;
-    align-self: flex-start;
+    border-bottom-left-radius: 0;
+    order: 2;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+    align-self: flex-end;
+    order: 2;
+}
+
+.sent .avatar {
+    order: 3;
 }
 
 .chat-input {

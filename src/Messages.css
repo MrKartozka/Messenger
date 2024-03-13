@@ -106,14 +106,11 @@ body {
     margin-right: 10px;
 }
 
-/* Модальное окно изменения статуса */
-
 .sidebar-modal__changestatus {
     margin-left: 55px;
     display: flex;
     flex-direction: column;
     position: absolute;
-    /* Добавьте стили для модального окна */
 }
 
 .sidebar-modal__changestatus button {
@@ -138,8 +135,6 @@ body {
 .sidebar-modal__changestatus button:nth-child(3):hover {
     background-color: rgb(255, 170, 170)
 }
-
-/* Модальное окно настроек */
 
 .sidebar-modal__options {
     display: flex;
@@ -169,4 +164,28 @@ body {
     position: relative;
     display: block;
     width: 30px;
+}
+
+.sidebar-modal__avatars {
+    width: 213px;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    z-index: 2;
+    right: -90px;
+}
+
+.sidebar-modal__avatars button {
+    background-color: white;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.sidebar-modal__avatars button:hover {
+    background-color: var(--background-color);
+}
+
+.sidebar-modal__avatars img {
+    max-width: 64px;
+    max-height: 64px;
 }
